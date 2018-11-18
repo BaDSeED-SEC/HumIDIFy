@@ -1,0 +1,13 @@
+# OASIS_START
+# DO NOT EDIT (digest: 396b307d2b57ec79a29c0e2904bb0900)
+version = "0.1.0"
+description = "Executable classifier."
+requires =
+"bap core_kernel elf classifier.ida sexplib str strings classifier.data classifier.util"
+archive(byte) = "lang.cma"
+archive(byte, plugin) = "lang.cma"
+archive(native) = "lang.cmxa"
+archive(native, plugin) = "lang.cmxs"
+exists_if = "lang.cma"
+# OASIS_STOP
+

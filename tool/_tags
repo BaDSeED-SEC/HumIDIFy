@@ -1,0 +1,146 @@
+# OASIS_START
+# DO NOT EDIT (digest: b933dbdefa7bbb73538c7b2b168bdd04)
+# Ignore VCS directories, you can use the same kind of rule outside
+# OASIS_START/STOP if you want to exclude directories that contains
+# useless stuff for the build process
+true: annot, bin_annot
+<**/.svn>: -traverse
+<**/.svn>: not_hygienic
+".bzr": -traverse
+".bzr": not_hygienic
+".hg": -traverse
+".hg": not_hygienic
+".git": -traverse
+".git": not_hygienic
+"_darcs": -traverse
+"_darcs": not_hygienic
+# Library classifier.ida
+"src/ida/classifier.ida.cmxs": use_classifier.ida
+<src/ida/*.ml{,i,y}>: pkg_bap
+<src/ida/*.ml{,i,y}>: pkg_core_kernel
+<src/ida/*.ml{,i,y}>: pkg_ida
+# Library classifier.data
+"src/data/classifier.data.cmxs": use_classifier.data
+<src/data/*.ml{,i,y}>: pkg_bap
+<src/data/*.ml{,i,y}>: pkg_core_kernel
+<src/data/*.ml{,i,y}>: pkg_elf
+# Library weka
+"src/weka/weka.cmxs": use_weka
+<src/weka/*.ml{,i,y}>: pkg_bap
+<src/weka/*.ml{,i,y}>: pkg_core_kernel
+<src/weka/*.ml{,i,y}>: pkg_unix
+# Library classifier.learning
+"src/learning/classifier.learning.cmxs": use_classifier.learning
+<src/learning/*.ml{,i,y}>: pkg_bap
+<src/learning/*.ml{,i,y}>: pkg_core_kernel
+<src/learning/*.ml{,i,y}>: pkg_elf
+<src/learning/*.ml{,i,y}>: pkg_fileutils
+<src/learning/*.ml{,i,y}>: pkg_ida
+<src/learning/*.ml{,i,y}>: pkg_unix
+<src/learning/*.ml{,i,y}>: use_classifier.data
+<src/learning/*.ml{,i,y}>: use_classifier.ida
+<src/learning/*.ml{,i,y}>: use_weka
+# Library classifier.block
+"src/block/classifier.block.cmxs": use_classifier.block
+<src/block/*.ml{,i,y}>: pkg_bap
+<src/block/*.ml{,i,y}>: pkg_core_kernel
+<src/block/*.ml{,i,y}>: pkg_ida
+<src/block/*.ml{,i,y}>: use_classifier.ida
+# Library classifier.util
+"src/util/classifier.util.cmxs": use_classifier.util
+<src/util/*.ml{,i,y}>: pkg_bap
+<src/util/*.ml{,i,y}>: pkg_core_kernel
+<src/util/*.ml{,i,y}>: pkg_elf
+<src/util/*.ml{,i,y}>: pkg_ida
+<src/util/*.ml{,i,y}>: use_classifier.block
+<src/util/*.ml{,i,y}>: use_classifier.data
+<src/util/*.ml{,i,y}>: use_classifier.ida
+# Library lang
+"src/lang/lang.cmxs": use_lang
+<src/lang/*.ml{,i,y}>: pkg_bap
+<src/lang/*.ml{,i,y}>: pkg_core_kernel
+<src/lang/*.ml{,i,y}>: pkg_elf
+<src/lang/*.ml{,i,y}>: pkg_ida
+<src/lang/*.ml{,i,y}>: pkg_sexplib
+<src/lang/*.ml{,i,y}>: pkg_str
+<src/lang/*.ml{,i,y}>: pkg_strings
+<src/lang/*.ml{,i,y}>: use_classifier.block
+<src/lang/*.ml{,i,y}>: use_classifier.data
+<src/lang/*.ml{,i,y}>: use_classifier.ida
+<src/lang/*.ml{,i,y}>: use_classifier.util
+# Executable eval-profile
+<src/profile.{native,byte}>: pkg_bap
+<src/profile.{native,byte}>: pkg_core_kernel
+<src/profile.{native,byte}>: pkg_elf
+<src/profile.{native,byte}>: pkg_ida
+<src/profile.{native,byte}>: pkg_sexplib
+<src/profile.{native,byte}>: pkg_str
+<src/profile.{native,byte}>: pkg_strings
+<src/profile.{native,byte}>: use_classifier.block
+<src/profile.{native,byte}>: use_classifier.data
+<src/profile.{native,byte}>: use_classifier.ida
+<src/profile.{native,byte}>: use_classifier.util
+<src/profile.{native,byte}>: use_lang
+# Executable fun-file
+<src/classify.{native,byte}>: pkg_bap
+<src/classify.{native,byte}>: pkg_core_kernel
+<src/classify.{native,byte}>: pkg_elf
+<src/classify.{native,byte}>: pkg_ida
+<src/classify.{native,byte}>: pkg_sexplib
+<src/classify.{native,byte}>: pkg_str
+<src/classify.{native,byte}>: pkg_strings
+<src/classify.{native,byte}>: use_classifier.block
+<src/classify.{native,byte}>: use_classifier.data
+<src/classify.{native,byte}>: use_classifier.ida
+<src/classify.{native,byte}>: use_classifier.util
+<src/classify.{native,byte}>: use_lang
+<src/*.ml{,i,y}>: pkg_sexplib
+<src/*.ml{,i,y}>: pkg_str
+<src/*.ml{,i,y}>: pkg_strings
+<src/*.ml{,i,y}>: use_classifier.block
+<src/*.ml{,i,y}>: use_classifier.util
+<src/*.ml{,i,y}>: use_lang
+# Executable classifier
+<src/main.{native,byte}>: pkg_bap
+<src/main.{native,byte}>: pkg_core_kernel
+<src/main.{native,byte}>: pkg_elf
+<src/main.{native,byte}>: pkg_fileutils
+<src/main.{native,byte}>: pkg_ida
+<src/main.{native,byte}>: use_classifier.data
+<src/main.{native,byte}>: use_classifier.ida
+# Executable process
+<src/process.{native,byte}>: pkg_bap
+<src/process.{native,byte}>: pkg_core_kernel
+<src/process.{native,byte}>: pkg_elf
+<src/process.{native,byte}>: pkg_fileutils
+<src/process.{native,byte}>: pkg_ida
+<src/process.{native,byte}>: use_classifier.data
+<src/process.{native,byte}>: use_classifier.ida
+# Executable process-classify
+<src/processClassify.{native,byte}>: pkg_bap
+<src/processClassify.{native,byte}>: pkg_core_kernel
+<src/processClassify.{native,byte}>: pkg_elf
+<src/processClassify.{native,byte}>: pkg_fileutils
+<src/processClassify.{native,byte}>: pkg_ida
+<src/processClassify.{native,byte}>: use_classifier.data
+<src/processClassify.{native,byte}>: use_classifier.ida
+# Executable process-sort
+<src/processSort.{native,byte}>: pkg_bap
+<src/processSort.{native,byte}>: pkg_core_kernel
+<src/processSort.{native,byte}>: pkg_elf
+<src/processSort.{native,byte}>: pkg_fileutils
+<src/processSort.{native,byte}>: pkg_ida
+<src/processSort.{native,byte}>: use_classifier.data
+<src/processSort.{native,byte}>: use_classifier.ida
+<src/*.ml{,i,y}>: pkg_elf
+<src/*.ml{,i,y}>: pkg_fileutils
+<src/*.ml{,i,y}>: pkg_ida
+<src/*.ml{,i,y}>: use_classifier.data
+<src/*.ml{,i,y}>: use_classifier.ida
+# Executable rebuild
+<src/rebuild.{native,byte}>: pkg_bap
+<src/rebuild.{native,byte}>: pkg_core_kernel
+<src/*.ml{,i,y}>: pkg_bap
+<src/*.ml{,i,y}>: pkg_core_kernel
+# OASIS_STOP
+true: use_menhir

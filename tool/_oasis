@@ -1,0 +1,195 @@
+OASISFormat: 0.4
+Name:        classifier
+Version:     0.1.0
+Synopsis:    Executable classifier.
+Authors:     Sam Thomas <s@ghost.sh>
+License:     BSD-3-clause
+Plugins:     META (0.4), DevFiles (0.4)
+
+Library "classifier.ida"
+  Path: src/ida
+  Modules: IDALink
+  InternalModules: IDALinkArch
+  BuildTools: ocamlbuild
+  BuildDepends:
+    bap,
+    core_kernel,
+    ida
+  CompiledObject: best
+
+Library "classifier.data"
+  Path: src/data
+  Modules: DataAnalysis
+  InternalModules: DataExtraction
+  BuildTools: ocamlbuild
+  BuildDepends:
+    bap,
+    core_kernel,
+    elf
+  CompiledObject: best
+
+Library "classifier.util"
+  Path: src/util
+  Modules: FunGraph, Symtab
+  BuildTools: ocamlbuild
+  BuildDepends:
+    bap,
+    core_kernel,
+    elf,
+    classifier.block,
+    classifier.data,
+    classifier.ida
+  CompiledObject: best
+
+Library "classifier.learning"
+  Path: src/learning
+  Modules: SemiSupervised
+  BuildTools: ocamlbuild
+  BuildDepends:
+    bap,
+    core_kernel,
+    elf,
+    fileutils,
+    classifier.data,
+    classifier.ida,
+    unix,
+    weka
+  CompiledObject: best
+
+Library "weka"
+  Path: src/weka
+  Modules: Weka
+  InternalModules: WekaSystem
+  BuildTools: ocamlbuild
+  BuildDepends:
+    bap,
+    core_kernel,
+    unix
+  CompiledObject: best
+
+Library "classifier.block"
+  Path: src/block
+  Modules: BlockGraph
+  BuildTools: ocamlbuild
+  BuildDepends:
+    bap,
+    core_kernel,
+    classifier.ida
+  CompiledObject: best
+
+Library lang
+  Path:            src/lang
+  BuildTools:      ocamlbuild, ocamllex, menhir
+  BuildDepends:    bap, core_kernel, elf, classifier.ida, sexplib, str, strings, classifier.data, classifier.util
+  Modules:         Lang
+  InternalModules: LangAst,
+                   LangBuiltin,
+                   LangBuiltinBase,
+                   LangBuiltinElf,
+                   LangBuiltinFromIDA,
+                   LangBuiltinStrings,
+                   LangEval,
+                   LangImport,
+                   LangLexer,
+                   LangParser,
+                   LangTypeChecker,
+                   LangUtil
+
+Executable "eval-profile"
+  Path: src
+  MainIs: profile.ml
+  BuildTools:
+    camlp4o,
+    ocamlbuild
+  BuildDepends:
+    bap,
+    core_kernel,
+    classifier.block,
+    classifier.util,
+    lang
+  CompiledObject: best
+
+Executable "fun-file"
+  Path: src
+  MainIs: classify.ml
+  BuildTools:
+    camlp4o,
+    ocamlbuild
+  BuildDepends:
+    bap,
+    core_kernel,
+    classifier.block,
+    classifier.util,
+    lang
+  CompiledObject: best
+
+Executable "classifier"
+  Path: src
+  MainIs: main.ml
+  BuildTools:
+    camlp4o,
+    ocamlbuild
+  BuildDepends:
+    bap,
+    core_kernel,
+    elf,
+    fileutils,
+    classifier.data,
+    classifier.ida
+  CompiledObject: best
+
+Executable "process"
+  Path: src
+  MainIs: process.ml
+  BuildTools:
+    camlp4o,
+    ocamlbuild
+  BuildDepends:
+    bap,
+    core_kernel,
+    elf,
+    fileutils,
+    classifier.data,
+    classifier.ida
+  CompiledObject: best
+
+Executable "process-classify"
+  Path: src
+  MainIs: processClassify.ml
+  BuildTools:
+    camlp4o,
+    ocamlbuild
+  BuildDepends:
+    bap,
+    core_kernel,
+    elf,
+    fileutils,
+    classifier.data,
+    classifier.ida
+  CompiledObject: best
+
+Executable "process-sort"
+  Path: src
+  MainIs: processSort.ml
+  BuildTools:
+    camlp4o,
+    ocamlbuild
+  BuildDepends:
+    bap,
+    core_kernel,
+    elf,
+    fileutils,
+    classifier.data,
+    classifier.ida
+  CompiledObject: best
+
+Executable "rebuild"
+  Path: src
+  MainIs: rebuild.ml
+  BuildTools:
+    camlp4o,
+    ocamlbuild
+  BuildDepends:
+    bap,
+    core_kernel
+  CompiledObject: best

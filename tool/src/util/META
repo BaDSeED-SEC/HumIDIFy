@@ -1,0 +1,56 @@
+# OASIS_START
+# DO NOT EDIT (digest: 65f50cdcf5b01943920d6e6ba0e81345)
+package "util" (
+ version = "0.1.0"
+ description = "Executable classifier."
+ requires =
+ "bap core_kernel elf classifier.block classifier.data classifier.ida"
+ archive(byte) = "classifier.util.cma"
+ archive(byte, plugin) = "classifier.util.cma"
+ archive(native) = "classifier.util.cmxa"
+ archive(native, plugin) = "classifier.util.cmxs"
+ exists_if = "classifier.util.cma"
+)
+package "learning" (
+ version = "0.1.0"
+ description = "Executable classifier."
+ requires =
+ "bap core_kernel elf fileutils classifier.data classifier.ida unix weka"
+ archive(byte) = "classifier.learning.cma"
+ archive(byte, plugin) = "classifier.learning.cma"
+ archive(native) = "classifier.learning.cmxa"
+ archive(native, plugin) = "classifier.learning.cmxs"
+ exists_if = "classifier.learning.cma"
+)
+package "ida" (
+ version = "0.1.0"
+ description = "Executable classifier."
+ requires = "bap core_kernel ida"
+ archive(byte) = "classifier.ida.cma"
+ archive(byte, plugin) = "classifier.ida.cma"
+ archive(native) = "classifier.ida.cmxa"
+ archive(native, plugin) = "classifier.ida.cmxs"
+ exists_if = "classifier.ida.cma"
+)
+package "data" (
+ version = "0.1.0"
+ description = "Executable classifier."
+ requires = "bap core_kernel elf"
+ archive(byte) = "classifier.data.cma"
+ archive(byte, plugin) = "classifier.data.cma"
+ archive(native) = "classifier.data.cmxa"
+ archive(native, plugin) = "classifier.data.cmxs"
+ exists_if = "classifier.data.cma"
+)
+package "block" (
+ version = "0.1.0"
+ description = "Executable classifier."
+ requires = "bap core_kernel classifier.ida"
+ archive(byte) = "classifier.block.cma"
+ archive(byte, plugin) = "classifier.block.cma"
+ archive(native) = "classifier.block.cmxa"
+ archive(native, plugin) = "classifier.block.cmxs"
+ exists_if = "classifier.block.cma"
+)
+# OASIS_STOP
+

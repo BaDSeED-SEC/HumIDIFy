@@ -1,0 +1,12 @@
+# OASIS_START
+# DO NOT EDIT (digest: 6fbe7334c64737766bbac75de6542e76)
+version = "0.1.0"
+description = "Executable classifier."
+requires = "bap core_kernel unix"
+archive(byte) = "weka.cma"
+archive(byte, plugin) = "weka.cma"
+archive(native) = "weka.cmxa"
+archive(native, plugin) = "weka.cmxs"
+exists_if = "weka.cma"
+# OASIS_STOP
+
